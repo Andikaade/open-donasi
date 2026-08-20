@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::create([
             'username' => 'admin_tahfiz',
             'name' => 'Pengurus Rumah Tahfiz',
-            'email' => 'admin@rumahtahfiz.or.id',
+            'email' => 'admin@rumahtahfiz.com',
             'password' => Hash::make('password123'),
             'phone' => '081234567890',
             'is_admin' => true,
