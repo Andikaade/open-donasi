@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.hero-gradient {
+    background: radial-gradient(135.8% 120.3% at 50% 10%, #065f46 0%, #022c22 100%);
+}
+
+.glow-effect {
+    box-shadow: 0 0 50px -12px rgba(16, 185, 129, 0.35);
+}
+
+.swiper-grid-testimoni .swiper-slide {
+    height: auto !important;
+}
