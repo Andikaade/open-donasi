@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 
 class CampaignController extends Controller
 {
@@ -66,7 +68,9 @@ class CampaignController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $campaign = Campaign::with('category')->findOrFail($id);
+
+        return view('admin.campaigns.detail', compact('campaign'));
     }
 
     /**
@@ -74,6 +78,7 @@ class CampaignController extends Controller
      */
     public function edit(string $id)
     {
+        $campaign = Campaign::findOrFail($id);
         $categories = Category::all();
         return view('admin.campaigns.edit', compact('campaign', 'categories'));
     }
@@ -83,6 +88,10 @@ class CampaignController extends Controller
      */
     public function update(Request $request, string $id)
     {
+       // 1. Cari data campaign berdasarkan ID
+        $campaign = Campaign::findOrFail($id);
+
+        // 2. Validasi input termasuk budget_plan_file
         $request->validate([
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -91,16 +100,28 @@ class CampaignController extends Controller
             'target_amount' => 'required|numeric|min:1000',
             'end_date' => 'nullable|date',
             'featured_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'budget_plan_file' => 'nullable|mimes:pdf,jpg,jpeg,png|max:5000', // Validasi file RAB (Max 5MB)
         ]);
 
+        // 3. Olah Gambar Utama (Featured Image)
         $imagePath = $campaign->featured_image;
         if ($request->hasFile('featured_image')) {
-            if ($campaign->featured_image) {
+            if ($campaign->featured_image && Storage::disk('public')->exists($campaign->featured_image)) {
                 Storage::disk('public')->delete($campaign->featured_image);
             }
             $imagePath = $request->file('featured_image')->store('campaigns', 'public');
         }
 
+        // 4. Olah File RAB (Budget Plan File)
+        $budgetPlanPath = $campaign->budget_plan_file;
+        if ($request->hasFile('budget_plan_file')) {
+            if ($campaign->budget_plan_file && Storage::disk('public')->exists($campaign->budget_plan_file)) {
+                Storage::disk('public')->delete($campaign->budget_plan_file);
+            }
+            $budgetPlanPath = $request->file('budget_plan_file')->store('campaigns/rab', 'public');
+        }
+
+        // 5. Update Database
         $campaign->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
@@ -109,6 +130,7 @@ class CampaignController extends Controller
             'target_amount' => $request->target_amount,
             'end_date' => $request->end_date,
             'featured_image' => $imagePath,
+            'budget_plan_file' => $budgetPlanPath, // Menyimpan path file RAB
             'is_active' => $request->has('is_active'),
         ]);
 
@@ -120,7 +142,22 @@ class CampaignController extends Controller
      */
     public function destroy(string $id)
     {
+        // 1. Cari data campaign berdasarkan ID
+        $campaign = Campaign::findOrFail($id);
+
+        // 2. Hapus file featured_image jika ada
+        if ($campaign->featured_image && Storage::disk('public')->exists($campaign->featured_image)) {
+            Storage::disk('public')->delete($campaign->featured_image);
+        }
+
+        // 3. Hapus file budget_plan_file (RAB) jika ada
+        if ($campaign->budget_plan_file && Storage::disk('public')->exists($campaign->budget_plan_file)) {
+            Storage::disk('public')->delete($campaign->budget_plan_file);
+        }
+
+        // 4. Hapus data dari database
         $campaign->delete();
+
         return redirect()->route('admin.campaigns.index')->with('success', 'Program donasi berhasil dihapus!');
     }
 }

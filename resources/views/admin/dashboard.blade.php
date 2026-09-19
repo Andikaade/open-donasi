@@ -19,7 +19,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 space-y-6">
+    <div class="py-2 space-y-6">
 
         <!-- 1. KARTU STATISTIK UTAMA -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

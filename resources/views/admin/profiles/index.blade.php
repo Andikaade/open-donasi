@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="p-6 max-w-4xl space-y-6">
+    <div class="p-2 max-w-4xl space-y-6">
 
         <!-- Header Halaman -->
         <div>

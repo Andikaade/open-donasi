@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="p-6 space-y-6" x-data="{ activeTab: 'masuk' }">
+    <div class="p-2 space-y-6" x-data="{ activeTab: 'masuk' }">
 
         <!-- Header Halaman -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
