@@ -28,7 +28,7 @@
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-amber-300 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                 <div class="relative bg-slate-900/50 border border-white/10 p-3 rounded-3xl backdrop-blur-sm glow-effect">
-                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop"
+                    <img src="{{ asset('images/banner.png') }}"
                             alt="Santri Rumah Tahfiz"
                             class="rounded-2xl object-cover w-full h-80 lg:h-96 transform group-hover:scale-[1.01] transition-transform duration-500">
                 </div>

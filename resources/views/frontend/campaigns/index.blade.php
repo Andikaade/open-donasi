@@ -25,12 +25,18 @@
                         <!-- Gambar & Badge -->
                         <div class="relative h-48 overflow-hidden bg-slate-200">
                             <a href="{{ route('campaigns.show', $campaign->slug) }}">
-                                <img src="{{ $campaign->image ?? 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80' }}"
-                                     alt="{{ $campaign->title }}"
-                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                                @if($campaign->featured_image)
+                                    <img src="{{ Storage::url($campaign->featured_image) }}"
+                                         alt="{{ $campaign->title }}"
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                                @else
+                                    <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80"
+                                         alt="{{ $campaign->title }}"
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                                @endif
                             </a>
                             <span class="absolute top-3 left-3 bg-emerald-600/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wider">
-                                {{ $campaign->category ?? 'Donasi' }}
+                                {{ $campaign->category->name ?? 'Donasi' }}
                             </span>
                         </div>
 
@@ -64,10 +70,12 @@
                             <!-- CTA Buttons -->
                             <div class="grid grid-cols-2 gap-2 pt-2">
                                 <a href="{{ route('campaigns.show', $campaign->slug) }}"
+                                {{-- <a href="#" --}}
                                    class="w-full text-center px-3 py-2.5 rounded-xl text-xs font-semibold border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors">
                                     Detail Program
                                 </a>
-                                <a href="{{ route('campaigns.donasi', $campaign->slug) }}"
+                                {{-- <a href="{{ route('campaigns.donasi', $campaign->slug) }}" --}}
+                                <a href="#"
                                    class="w-full text-center px-3 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-colors">
                                     Donasi Sekarang
                                 </a>

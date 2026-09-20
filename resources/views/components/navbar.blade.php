@@ -45,8 +45,14 @@
                              class="absolute left-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50"
                              style="display: none;">
 
+                            <a href="#" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                                Profil
+                            </a>
                             <a href="#legalitas" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                                Profil & Legalitas
+                                Legalitas
+                            </a>
+                            <a href="#" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                                Logo
                             </a>
                             <a href="#struktur" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
                                 Struktur Organisasi
@@ -86,12 +92,15 @@
                             <a href="#pengumuman" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
                                 pengumuman
                             </a>
+                            <a href="#" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                                Kurikulum
+                            </a>
                             <a href="{{ route('galeri.index') }}" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
                                 Galery
                             </a>
 
                             <a href="{{ route('artikel.index') }}" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                                Kabar Santri
+                                Kabar Hafizh & Hafizah
                             </a>
                             {{-- <a href="{{ route('home') }}#testimoni" @click="open = false" class="flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
                                 Apa Kata Mereka

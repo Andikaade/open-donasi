@@ -7,14 +7,19 @@ use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\StructureController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileAdminController;
+
+use App\Http\Controllers\Public\CampaignController as PublicCampaignController;;
+
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -47,9 +52,12 @@ Route::get('/transparansi', [FrontendController::class, 'transparansi'])->name('
 Route::get('/kabar-santri', [FrontendController::class, 'artikel'])->name('artikel.index');
 Route::get('/kabar-santri/{slug}', [FrontendController::class, 'showArtikel'])->name('artikel.show');
 Route::get('/struktur-organisasi', [FrontendController::class, 'struktur'])->name('struktur.index');
-Route::get('/program', [FrontendController::class, 'campaigns'])->name('campaigns.index');
-Route::get('/program/{slug}', [FrontendController::class, 'showCampaign'])->name('campaigns.show');
-Route::get('/program/{slug}/donasi', [FrontendController::class, 'donasiCampaign'])->name('campaigns.donasi');
+// Route::get('/program', [FrontendController::class, 'campaigns'])->name('campaigns.index');
+// Route::get('/program/{slug}', [FrontendController::class, 'showCampaign'])->name('campaigns.show');
+// Route::get('/program/{slug}/donasi', [FrontendController::class, 'donasiCampaign'])->name('campaigns.donasi');
+
+Route::get('/program', [PublicCampaignController::class, 'index'])->name('campaigns.index');
+Route::get('/program/{slug}', [PublicCampaignController::class, 'show'])->name('campaigns.show');
 
 
 require __DIR__.'/auth.php';

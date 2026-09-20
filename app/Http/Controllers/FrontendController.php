@@ -14,8 +14,9 @@ class FrontendController extends Controller
     public function index()
     {
         return view('welcome', [
-            'artikel_terbaru' => Artikel::latest()->take(3)->get(), // Hanya 3 artikel
-            'galeri_preview' => Gallery::latest()->take(6)->get(),   // Preview foto terbatas
+            'campaigns'       => Campaign::with('category')->where('is_active', true)->latest()->take(3)->get(),
+            'artikel_terbaru' => Artikel::latest()->take(3)->get(),
+            'galeri_preview'  => Gallery::latest()->take(6)->get(),
         ]);
     }
 
@@ -46,16 +47,15 @@ class FrontendController extends Controller
     {
         return view('frontend.struktur.index');
     }
-    public function campaigns()
-    {
-        $campaigns = Campaign::where('is_active', true)->latest()->paginate(9);
-    return view('frontend.campaigns.index', compact('campaigns'));
-    }
-    public function showCampaign($slug)
-    {
-        $campaign = Campaign::where('slug', $slug)->where('is_active', true)->firstOrFail();
-        return view('frontend.campaigns.show', compact('campaign'));
-    }
+    // public function campaigns()
+    // {
+    //     $campaigns = Campaign::with('category')
+    //         ->where('is_active', true)
+    //         ->latest()
+    //         ->paginate(9);
+    //     return view('frontend.campaigns.index', compact('campaigns'));
+    // }
+
     public function donasiCampaign($slug)
     {
         $campaign = Campaign::where('slug', $slug)->firstOrFail();
