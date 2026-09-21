@@ -66,8 +66,8 @@
 
                 <!-- Tombol Donasi -->
                 <div class="p-6 pt-0">
-                    {{-- <a href="{{ route('campaigns.donasi', $campaign->slug) }}" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300"> --}}
-                    <a href="#" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300">
+                    <a href="{{ route('campaigns.donasi', $campaign->slug) }}" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300">
+                    {{-- <a href="#" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300"> --}}
                         Donasi Sekarang
                     </a>
                 </div>

@@ -3,7 +3,7 @@
         <div class="flex justify-between h-20 items-center">
 
             <!-- Logo & Nama -->
-            <a href="#" class="flex items-center gap-3 group shrink-0 ">
+            <a href="{{ route('home') }}" class="flex items-center gap-3 group shrink-0 ">
             <!-- Kontainer Logo Presisi -->
                 <div class="w-20 h-20 flex items-center justify-center shrink-0 overflow-hidden">
                     <img src="{{ asset('images/logo-amanah.png') }}"
@@ -17,12 +17,12 @@
                 </span>
             </a>
 
-            <!-- Right Wrapper: Menampung Links + Button Sign In -->
+            <!-- Right Wrapper: link dropdown menu & Singin -->
             <div class="flex items-center gap-8 ml-auto">
 
                 <!-- Navigation Links (Digeser ke kanan dengan ml-auto pada wrapper) -->
                 <div class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-600">
-                    <a href="#beranda" class="hover:text-emerald-600 transition-colors">Beranda</a>
+                    <a href="{{ route('home') }}" class="hover:text-emerald-600 transition-colors">Beranda</a>
                     {{-- <a href="#pengumuman" class="hover:text-emerald-600 transition-colors">Pengumunan</a> --}}
 
                     <!-- Dropdown Tentang Kami -->

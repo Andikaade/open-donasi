@@ -47,19 +47,5 @@ class FrontendController extends Controller
     {
         return view('frontend.struktur.index');
     }
-    // public function campaigns()
-    // {
-    //     $campaigns = Campaign::with('category')
-    //         ->where('is_active', true)
-    //         ->latest()
-    //         ->paginate(9);
-    //     return view('frontend.campaigns.index', compact('campaigns'));
-    // }
 
-    public function donasiCampaign($slug)
-    {
-        $campaign = Campaign::where('slug', $slug)->firstOrFail();
-        return view('frontend.campaigns.donasi', compact('campaign'));
-
-    }
 }

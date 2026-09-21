@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\StructureController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
-use App\Http\Controllers\Public\CampaignController as PublicCampaignController;;
+use App\Http\Controllers\Public\CampaignController as PublicCampaignController;
+use App\Http\Controllers\Public\DonasiController;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
@@ -58,6 +59,8 @@ Route::get('/struktur-organisasi', [FrontendController::class, 'struktur'])->nam
 
 Route::get('/program', [PublicCampaignController::class, 'index'])->name('campaigns.index');
 Route::get('/program/{slug}', [PublicCampaignController::class, 'show'])->name('campaigns.show');
+
+Route::get('/program/{slug}/donasi', [DonasiController::class, 'index'])->name('campaigns.donasi');
 
 
 require __DIR__.'/auth.php';

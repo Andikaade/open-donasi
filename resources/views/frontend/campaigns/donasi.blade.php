@@ -1,13 +1,13 @@
 <x-guest-layout>
-    <div class="bg-slate-50 min-h-screen py-10 sm:py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-slate-50 min-h-screen py-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Breadcrumb -->
-            <nav class="flex mb-6 text-xs text-slate-500 font-medium">
+            <nav class="flex mb-6 text-xs text-slate-500">
                 <a href="{{ route('campaigns.index') }}" class="hover:text-emerald-600">Program Donasi</a>
                 <span class="mx-2">/</span>
-                <a href="{{ route('campaigns.show', $campaign->slug ?? 'mbg-mandiri') }}" class="hover:text-emerald-600 truncate max-w-[200px]">
-                    {{ $campaign->title ?? 'Dapur Tahfiz: Makan Bergizi Gratis' }}
+                <a href="{{ route('campaigns.show', $campaign->slug) }}" class="hover:text-emerald-600 truncate max-w-[200px]">
+                    {{ $campaign->title }}
                 </a>
                 <span class="mx-2">/</span>
                 <span class="text-slate-800 font-semibold">Form Donasi</span>
@@ -19,6 +19,9 @@
                 <div class="lg:col-span-7 space-y-6">
                     <form action="#" method="POST" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 space-y-6">
                         @csrf
+
+                        <!-- Hidden input untuk menyimpan ID Campaign yang disasar -->
+                        <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
 
                         <div>
                             <h2 class="text-xl font-bold text-slate-900">Isi Nominal Donasi</h2>
@@ -92,7 +95,7 @@
 
                             <div class="flex items-center gap-2 pt-1">
                                 <input type="checkbox" id="is_anonymous" name="is_anonymous" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                                <label for="is_anonymous" class="text-xs text-slate-600 select-none">Sembunyikan nama saya (Sembagai Hamba Allah)</label>
+                                <label for="is_anonymous" class="text-xs text-slate-600 select-none">Sembunyikan nama saya (Sebagai Hamba Allah)</label>
                             </div>
                         </div>
 
@@ -103,21 +106,24 @@
                     </form>
                 </div>
 
-                <!-- Kolom Ringkasan Campaign -->
+                <!-- Kolom Ringkasan Campaign Dinamis -->
                 <div class="lg:col-span-5">
                     <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 sticky top-8 space-y-4">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Anda Akan Berdonasi Untuk</h3>
 
                         <div class="flex items-start gap-4">
-                            <img src="{{ $campaign->image ?? 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600' }}"
-                                 alt="Thumbnail Program"
-                                 class="w-20 h-20 rounded-xl object-cover shrink-0">
+                            @if($campaign->featured_image)
+                                <img src="{{ Storage::url($campaign->featured_image) }}" alt="{{ $campaign->title }}" class="w-20 h-20 rounded-xl object-cover shrink-0">
+                            @else
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600" alt="{{ $campaign->title }}" class="w-20 h-20 rounded-xl object-cover shrink-0">
+                            @endif
+
                             <div>
                                 <span class="inline-block px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded">
-                                    {{ $campaign->category ?? 'MBG Mandiri' }}
+                                    {{ $campaign->category->name ?? 'Donasi' }}
                                 </span>
                                 <h4 class="font-bold text-slate-900 text-sm leading-snug mt-1">
-                                    {{ $campaign->title ?? 'Dapur Tahfiz: Makan Bergizi Gratis (MBG) Santri' }}
+                                    {{ $campaign->title }}
                                 </h4>
                             </div>
                         </div>
@@ -125,11 +131,11 @@
                         <div class="pt-4 border-t border-slate-100 space-y-2">
                             <div class="flex justify-between text-xs text-slate-500">
                                 <span>Penyelenggara</span>
-                                <span class="font-semibold text-slate-800">Rumah Tahfiz Amanah</span>
+                                <span class="font-semibold text-slate-800">{{ $campaign->user->name ?? 'Rumah Tahfiz Amanah' }}</span>
                             </div>
                             <div class="flex justify-between text-xs text-slate-500">
                                 <span>Target Program</span>
-                                <span class="font-semibold text-slate-800">Rp {{ number_format($campaign->target_amount ?? 15000000, 0, ',', '.') }}</span>
+                                <span class="font-semibold text-slate-800">Rp {{ number_format($campaign->target_amount, 0, ',', '.') }}</span>
                             </div>
                         </div>
 

@@ -72,8 +72,7 @@
                         </div>
 
                         <!-- CTA Donasi -->
-                        {{-- <a href="{{ route('campaigns.donasi', $campaign->slug) }}" --}}
-                        <a href="#"
+                        <a href="{{ route('campaigns.donasi', $campaign->slug) }}"
                            class="w-full block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-colors text-sm">
                             Donasi Sekarang
                         </a>
