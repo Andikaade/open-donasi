@@ -70,7 +70,7 @@ class CampaignController extends Controller
     {
         $campaign = Campaign::with('category')->findOrFail($id);
 
-        return view('admin.campaigns.detail', compact('campaign'));
+        return view('admin.campaigns.show', compact('campaign'));
     }
 
     /**

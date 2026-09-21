@@ -8,7 +8,7 @@
                 <p class="text-sm text-slate-500 mt-1">Atur dan publikasikan berita kegiatan serta perkembangan santri yang tampil di halaman utama.</p>
             </div>
             <div class="flex items-center gap-3">
-                <a href="{{ route('admin.artikels.create') ?? '#' }}"
+                <a href="{{ route('admin.artikels.create') }}"
                    class="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl shadow-lg shadow-emerald-600/20 transition-all">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -23,7 +23,7 @@
             <div class="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm space-y-2">
                 <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Artikel</p>
                 <h3 class="text-2xl font-bold text-slate-800">
-                    {{ isset($artikels) ? $artikels->count() : 3 }}
+                    {{ isset($artikels) ? $artikels->count() : 0 }}
                 </h3>
                 <p class="text-xs text-slate-400">Keseluruhan postingan berita</p>
             </div>
@@ -31,7 +31,7 @@
             <div class="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm space-y-2">
                 <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Artikel Dipublikasi</p>
                 <h3 class="text-2xl font-bold text-emerald-600">
-                    {{ isset($artikels) ? $artikels->where('status', 'published')->count() : 3 }}
+                    {{ isset($artikels) ? $artikels->whereNotNull('published_at')->count() : 0 }}
                 </h3>
                 <p class="text-xs text-slate-400">Tampil aktif di website publik</p>
             </div>
@@ -39,7 +39,7 @@
             <div class="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm space-y-2">
                 <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Draft / Konsep</p>
                 <h3 class="text-2xl font-bold text-amber-500">
-                    {{ isset($artikels) ? $artikels->where('status', 'draft')->count() : 0 }}
+                    {{ isset($artikels) ? $artikels->whereNull('published_at')->count() : 0 }}
                 </h3>
                 <p class="text-xs text-slate-400">Belum dipublikasikan</p>
             </div>
@@ -100,10 +100,10 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500 text-[11px] max-w-sm">
-                                    <p class="line-clamp-2">{{ $item->excerpt ?? Str::limit(strip_tags($item->content), 80) }}</p>
+                                    <p class="line-clamp-2">{{ $item->excerpt ?? Str::limit(strip_tags($item->body), 80) }}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    @if(($item->status ?? 'published') == 'published')
+                                    @if(!empty($item->published_at))
                                         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                                             Aktif
@@ -116,80 +116,43 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 text-slate-500 text-[11px] whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
+                                    {{ $item->published_at ? \Carbon\Carbon::parse($item->published_at)->translatedFormat('d F Y') : '-' }}
                                 </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <a href="{{ route('admin.artikels.edit', $item->id) ?? '#' }}"
-                                           class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold text-xs transition-colors">
-                                            Edit
+                               <td class="px-6 py-4 text-center whitespace-nowrap">
+                                    <div class="flex items-center justify-center gap-3">
+                                        <!-- Tombol Edit -->
+                                        <a href="{{ route('admin.artikels.edit', $item->id) }}"
+                                        class="p-1.5 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                                        title="Edit Artikel">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                            </svg>
                                         </a>
-                                        <button class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-semibold text-xs transition-colors">
-                                            Hapus
-                                        </button>
+
+                                        <!-- Tombol Hapus -->
+                                        <form action="{{ route('admin.artikels.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus artikel ini?');" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                    class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                                                    title="Hapus Artikel">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                </svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
                         @empty
-                            <!-- Dummy Data (Tampilan Sementara jika data DB belum diisi) -->
-                            <tr class="hover:bg-slate-50/80 transition-all">
-                                <td class="px-6 py-4 max-w-xs">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-14 h-10 rounded-lg bg-emerald-100 flex-shrink-0 flex items-center justify-center text-emerald-600 font-bold text-xs">
-                                            IMG
-                                        </div>
-                                        <div class="font-bold text-slate-800 line-clamp-2">
-                                            Ujian Tasmi' 3 Juz Santri Angkatan Ke-2
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-500 text-[11px] max-w-sm">
-                                    <p class="line-clamp-2">Alhamdulillah, sebanyak 10 santri berhasil menuntaskan hafalan dengan predikat mumtaz.</p>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                        Aktif
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-slate-500 text-[11px] whitespace-nowrap">
-                                    15 Februari 2026
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <button class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold text-xs transition-colors">Edit</button>
-                                        <button class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-semibold text-xs transition-colors">Hapus</button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-slate-50/80 transition-all">
-                                <td class="px-6 py-4 max-w-xs">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-14 h-10 rounded-lg bg-emerald-100 flex-shrink-0 flex items-center justify-center text-emerald-600 font-bold text-xs">
-                                            IMG
-                                        </div>
-                                        <div class="font-bold text-slate-800 line-clamp-2">
-                                            Penyaluran Menu MBG Sehat Pekan Ke-2
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-500 text-[11px] max-w-sm">
-                                    <p class="line-clamp-2">Pemberian nutrisi berupa susu, buah, dan makanan bergizi untuk mendukung hafalan harian santri.</p>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                        Aktif
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-slate-500 text-[11px] whitespace-nowrap">
-                                    10 Februari 2026
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <button class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold text-xs transition-colors">Edit</button>
-                                        <button class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-semibold text-xs transition-colors">Hapus</button>
+                            <tr>
+                                <td colspan="5" class="px-6 py-12 text-center text-slate-400">
+                                    <div class="flex flex-col items-center justify-center gap-2">
+                                        <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l5 5v11a2 2 0 01-2 2z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 4v5h5"/>
+                                        </svg>
+                                        <p class="text-sm font-medium">Belum ada artikel yang ditambahkan.</p>
                                     </div>
                                 </td>
                             </tr>

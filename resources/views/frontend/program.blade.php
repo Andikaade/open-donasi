@@ -1,6 +1,6 @@
 <section id="program" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Header Section + Tombol Lihat Semua Program -->
+    <!-- Header Section + Menu Lihat Semua Program -->
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6" data-aos="fade-up">
         <div class="max-w-2xl">
             <span class="text-emerald-600 font-bold text-sm tracking-wider uppercase bg-emerald-50 px-3.5 py-1.5 rounded-full">Infaq Berkelanjutan</span>
@@ -8,7 +8,7 @@
             <p class="text-slate-600 mt-3 text-base">Pilih program kebaikan yang ingin Anda dukung untuk masa depan para santri.</p>
         </div>
 
-        <!-- Tombol Mengarah ke Katalog Semua Campaign -->
+        <!-- Menu Mengarah ke Katalog Semua Campaign -->
         <div class="shrink-0">
             <a href="{{ route('campaigns.index') }}" class="inline-flex items-center gap-2 font-bold text-emerald-600 hover:text-emerald-700 transition-colors group text-sm sm:text-base">
                 <span>Lihat Semua Program</span>
@@ -64,10 +64,9 @@
                     </div>
                 </div>
 
-                <!-- Tombol Donasi -->
+                <!-- Menu Donasi -->
                 <div class="p-6 pt-0">
                     <a href="{{ route('campaigns.donasi', $campaign->slug) }}" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300">
-                    {{-- <a href="#" class="w-full block text-center py-3 bg-slate-900 text-white font-semibold rounded-xl group-hover:bg-emerald-600 group-hover:shadow-lg transition-all duration-300"> --}}
                         Donasi Sekarang
                     </a>
                 </div>
