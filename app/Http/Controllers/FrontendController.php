@@ -14,6 +14,7 @@ class FrontendController extends Controller
     public function index()
     {
         return view('welcome', [
+            'artikels'        => Artikel::latest('published_at')->latest()->take(3)->get(),
             'campaigns'       => Campaign::with('category')->where('is_active', true)->latest()->take(3)->get(),
             'artikel_terbaru' => Artikel::latest()->take(3)->get(),
             'galeri_preview'  => Gallery::latest()->take(6)->get(),
@@ -32,17 +33,6 @@ class FrontendController extends Controller
         return view('frontend.transparansi.index', compact('reports'));
     }
 
-    public function artikel()
-    {
-        $artikels = Artikel::latest()->paginate(9);
-        return view('frontend.artikel.index', compact('artikels'));
-    }
-    public function showArtikel($slug)
-    {
-        $artikel = Artikel::where('slug', $slug)->firstOrFail();
-
-        return view('frontend.artikel.show', compact('artikel'));
-    }
     public function struktur()
     {
         return view('frontend.struktur.index');

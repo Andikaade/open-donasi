@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProfileAdminController;
 
 use App\Http\Controllers\Public\CampaignController as PublicCampaignController;
 use App\Http\Controllers\Public\DonasiController;
+use App\Http\Controllers\Public\ArtikelController as PublicArtikelController;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
@@ -51,8 +52,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 //Route Page Utama
 Route::get('/galeri', [FrontendController::class, 'galeri'])->name('galeri.index');
 Route::get('/transparansi', [FrontendController::class, 'transparansi'])->name('transparansi.index');
+
 Route::get('/kabar-santri', [FrontendController::class, 'artikel'])->name('artikel.index');
 Route::get('/kabar-santri/{slug}', [FrontendController::class, 'showArtikel'])->name('artikel.show');
+
 Route::get('/struktur-organisasi', [FrontendController::class, 'struktur'])->name('struktur.index');
 
 
@@ -61,6 +64,9 @@ Route::get('/program', [PublicCampaignController::class, 'index'])->name('campai
 Route::get('/program/{slug}', [PublicCampaignController::class, 'show'])->name('campaigns.show');
 
 Route::get('/program/{slug}/donasi', [DonasiController::class, 'index'])->name('campaigns.donasi');
+
+Route::get('/kabar-santri', [PublicArtikelController::class, 'index'])->name('artikel.index');
+Route::get('/kabar-santri/{slug}', [PublicArtikelController::class, 'show'])->name('artikel.show');
 
 
 require __DIR__.'/auth.php';
