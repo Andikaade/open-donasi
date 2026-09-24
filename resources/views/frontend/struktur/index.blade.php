@@ -5,11 +5,11 @@
             <!-- Header Page -->
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="inline-flex items-center gap-1.5 text-emerald-700 font-bold text-xs tracking-wider uppercase bg-emerald-100/80 px-3.5 py-1.5 rounded-full">
-                    Struktur Lengkap
+                    Masa Bakti 2026 - 2030
                 </span>
                 <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Struktur Organisasi & Pengurus</h1>
                 <p class="text-slate-500 mt-2 text-sm">
-                    Sinergi dewan pembina, pengurus harian, dan tenaga pendidik dalam mengelola Rumah Tahfiz Amanah.
+                    Sinergi pimpinan eksekutif, pengurus harian, seksi-seksi, dan majelis guru Rumah Tahfidz Al-Qur'an Jorong Simabur.
                 </p>
             </div>
 
@@ -18,149 +18,154 @@
                 <h2 class="text-center font-bold text-slate-900 text-lg mb-8">Bagan Alur Organisasi</h2>
 
                 <div class="flex flex-col items-center gap-6 overflow-x-auto pb-4">
-                    <!-- Level 1: Pembina / Penasihat -->
-                    <div class="bg-emerald-50 border-2 border-emerald-500 text-emerald-900 px-6 py-3 rounded-2xl text-center shadow-xs min-w-[220px]">
-                        <span class="text-[10px] uppercase font-bold text-emerald-600 block tracking-wider">Dewan Pembina</span>
-                        <strong class="text-sm block">Ustadz / Tokoh Pembina</strong>
+                    <!-- Level 0: Pelindung / Penasehat -->
+                    <div class="bg-slate-100 border border-slate-300 text-slate-800 px-6 py-2.5 rounded-2xl text-center shadow-xs min-w-[260px]">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 block tracking-wider">Pelindung / Penasehat</span>
+                        <strong class="text-xs block text-slate-700">Wali Nagari Simabur & KAN Nagari Simabur</strong>
                     </div>
 
-                    <!-- Garis Penghubung Vertikal -->
-                    <div class="w-0.5 h-6 bg-slate-300"></div>
+                    <div class="w-0.5 h-5 bg-slate-300"></div>
 
-                    <!-- Level 2: Ketua Pengurus -->
-                    <div class="bg-emerald-600 text-white px-6 py-3 rounded-2xl text-center shadow-md min-w-[220px]">
-                        <span class="text-[10px] uppercase font-bold text-emerald-200 block tracking-wider">Ketua Pengurus</span>
-                        <strong class="text-sm block">Nama Ketua Harian</strong>
+                    <!-- Level 1: Pimpinan Eksekutif & Pembina -->
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <div class="bg-emerald-50 border-2 border-emerald-500 text-emerald-900 px-6 py-3 rounded-2xl text-center shadow-xs min-w-[200px]">
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 block tracking-wider">Pimpinan Eksekutif</span>
+                            <strong class="text-sm block">YUHELMA, S.Pd</strong>
+                        </div>
+                        <div class="bg-emerald-50 border-2 border-emerald-500 text-emerald-900 px-6 py-3 rounded-2xl text-center shadow-xs min-w-[200px]">
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 block tracking-wider">Pembina</span>
+                            <strong class="text-sm block">ALGANI LABAI St, S.Hi</strong>
+                        </div>
                     </div>
 
-                    <!-- Garis Penghubung Vertikal -->
-                    <div class="w-0.5 h-6 bg-slate-300"></div>
+                    <div class="w-0.5 h-5 bg-slate-300"></div>
 
-                    <!-- Level 3: Divisi Harian -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl relative">
-                        <div class="hidden md:block absolute top-0 left-1/6 right-1/6 h-0.5 bg-slate-300 -translate-y-3"></div>
-
-                        <!-- Keuangan & ADM -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Keuangan & Adm</span>
-                            <strong class="text-xs text-slate-800 block mt-0.5">Nama Bendahara / ADM</strong>
+                    <!-- Level 2: Ketua Umum & Wakil Ketua -->
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <div class="bg-emerald-600 text-white px-6 py-3 rounded-2xl text-center shadow-md min-w-[200px]">
+                            <span class="text-[10px] uppercase font-bold text-emerald-200 block tracking-wider">Ketua Umum</span>
+                            <strong class="text-sm block">BEDRUL EFENDI, S.Pd.MM</strong>
                         </div>
-
-                        <!-- Koordinator Tahfiz -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Koordinator Tahfiz</span>
-                            <strong class="text-xs text-slate-800 block mt-0.5">Nama Kepala Pengajar</strong>
+                        <div class="bg-emerald-700 text-white px-6 py-3 rounded-2xl text-center shadow-md min-w-[200px]">
+                            <span class="text-[10px] uppercase font-bold text-emerald-200 block tracking-wider">Wakil Ketua</span>
+                            <strong class="text-sm block">Ir. NAZIRWAN</strong>
                         </div>
+                    </div>
 
-                        <!-- Umum & Logistik -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Umum & Logistik</span>
-                            <strong class="text-xs text-slate-800 block mt-0.5">Nama Tim Operasional</strong>
+                    <div class="w-0.5 h-5 bg-slate-300"></div>
+
+                    <!-- Level 3: Sekretaris & Bendahara -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl relative">
+                        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl text-center">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Sekretaris I</span>
+                            <strong class="text-xs text-slate-800 block mt-0.5">RADHIATUL HUSNA, S.Sos</strong>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl text-center">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Sekretaris II</span>
+                            <strong class="text-xs text-slate-800 block mt-0.5">DESSY FITRI YENI, S.Kom</strong>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl text-center">
+                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Bendahara</span>
+                            <strong class="text-xs text-slate-800 block mt-0.5">AKMAL, S.Pd.SD</strong>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: DETAIL DATA UMUM ANGGOTA & PENGURUS -->
+            <!-- SECTION 2: DETAIL DATA PENGURUS, SEKSI & MAJELIS GURU -->
             <div>
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Daftar Pengurus & Tenaga Pendidik</h2>
-                    <span class="text-xs text-slate-500">Total: 6 Anggota</span>
+                    <h2 class="text-xl font-bold text-slate-900">Daftar Pengurus & Seksi-Seksi</h2>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
 
-                    <!-- Anggota 1 -->
+                    <!-- Seksi Humas -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            UST
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-xs">
+                            HMS
                         </div>
                         <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Pembina Utama</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Nama Pembina / Tokoh</h3>
-                            <p class="text-xs text-slate-500 mt-1">Mengarahkan kebijakan & pertimbangan hukum syariat lembaga.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                ✉️ pembina@rumahtahfiz.or.id
-                            </div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Seksi Humas</span>
+                            <ul class="mt-2 space-y-1 text-xs text-slate-800 font-medium">
+                                <li>1. SYAIFUL EFFENDI</li>
+                                <li>2. ANTONI ARISTON</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Anggota 2 -->
+                    <!-- Seksi Prasarana -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            KUA
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-xs">
+                            PRS
                         </div>
                         <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Ketua Pengurus</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Nama Ketua Harian</h3>
-                            <p class="text-xs text-slate-500 mt-1">Menanggung jawabkan seluruh aktivitas operasional & program harian.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                📞 +62 812-3456-7890
-                            </div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Seksi Prasarana</span>
+                            <ul class="mt-2 space-y-1 text-xs text-slate-800 font-medium">
+                                <li>1. ERFEMIL</li>
+                                <li>2. ENDRI YANTI, S.Tr.Keb</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Anggota 3 -->
+                    <!-- Seksi Dana & Usaha -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            ADM
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-xs">
+                            DNU
                         </div>
                         <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Keuangan & Adm</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Nama Bendahara</h3>
-                            <p class="text-xs text-slate-500 mt-1">Mengelola pembukuan donasi, laporan keuangan, dan administrasi.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                ✉️ keuangan@rumahtahfiz.or.id
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Anggota 4 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            UST
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Koordinator Tahfiz</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Nama Kepala Pengajar</h3>
-                            <p class="text-xs text-slate-500 mt-1">Menyusun kurikulum hafalan santri dan evaluasi ujian setoran.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                📜 Sanad Al-Qur'an 30 Juz
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Anggota 5 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            USTZ
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Pengajar Putri</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Ustazah Musyrifah</h3>
-                            <p class="text-xs text-slate-500 mt-1">Pembimbing hafalan dan pengasuhan santriwati harian.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                📜 Pengajar Tajwid
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Anggota 6 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-extrabold text-base">
-                            LOG
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Tim Logistik</span>
-                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">Nama Penanggung Jawab</h3>
-                            <p class="text-xs text-slate-500 mt-1">Memastikan pemenuhan konsumsi MBG santri & fasilitas asrama.</p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
-                                📞 Ops Rumah Tangga
-                            </div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Seksi Dana & Usaha</span>
+                            <ul class="mt-2 space-y-1 text-xs text-slate-800 font-medium">
+                                <li>1. ANDIKA SURYA PUTRI, S.Pd</li>
+                                <li>2. EFRIJON LATIF</li>
+                            </ul>
                         </div>
                     </div>
 
                 </div>
+
+                <!-- SECTION 3: MAJELIS GURU -->
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">Majelis Guru / Tenaga Pendidik</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+                    <!-- Guru 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-bold text-xs">
+                            GRU
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Tenaga Pendidik</span>
+                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">ULFA FADILA, S.Pd</h3>
+                        </div>
+                    </div>
+
+                    <!-- Guru 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-bold text-xs">
+                            GRU
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Tenaga Pendidik</span>
+                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">ANITA MARLINA, S.Pd</h3>
+                        </div>
+                    </div>
+
+                    <!-- Guru 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-emerald-700 font-bold text-xs">
+                            GRU
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Tenaga Pendidik</span>
+                            <h3 class="font-bold text-slate-900 text-sm mt-0.5">RAHMI SUCI, S.Pd</h3>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>

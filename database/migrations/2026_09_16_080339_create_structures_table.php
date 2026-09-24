@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('code')->nullable(); // Misal: UST, KUA, ADM
             $table->string('name');
             $table->string('position'); // Jabatan
-            $table->enum('category', ['pembina', 'pengurus', 'pendidik']);
+            $table->string('category');
             $table->string('email_or_phone')->nullable();
             $table->text('note')->nullable();
             $table->integer('order_priority')->default(0);

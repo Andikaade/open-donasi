@@ -7,7 +7,7 @@
     @include('frontend.struktur')
     @include('frontend.program')
     @include('frontend.gallery')
-    @include('frontend.testimoni')
     {{-- @include('frontend.keuangan') --}}
     @include('frontend.artikel')
+    @include('frontend.testimoni')
 </x-layouts.frontend>

@@ -24,6 +24,7 @@ class Structure extends Model
      */
     protected $fillable = [
         'code',
+        'avatar',
         'name',
         'position',
         'category',
