@@ -11,21 +11,14 @@ use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\Public\CampaignController as PublicCampaignController;
 use App\Http\Controllers\Public\DonasiController;
 use App\Http\Controllers\Public\ArtikelController as PublicArtikelController;
+use App\Http\Controllers\Public\OrganisasiController;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [FrontendController::class, 'index'])->name('home');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,11 +46,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 Route::get('/galeri', [FrontendController::class, 'galeri'])->name('galeri.index');
 Route::get('/transparansi', [FrontendController::class, 'transparansi'])->name('transparansi.index');
 
-Route::get('/kabar-santri', [FrontendController::class, 'artikel'])->name('artikel.index');
-Route::get('/kabar-santri/{slug}', [FrontendController::class, 'showArtikel'])->name('artikel.show');
-
-Route::get('/struktur-organisasi', [FrontendController::class, 'struktur'])->name('struktur.index');
-
 
 // Route Public Controller
 Route::get('/program', [PublicCampaignController::class, 'index'])->name('campaigns.index');
@@ -67,6 +55,8 @@ Route::get('/program/{slug}/donasi', [DonasiController::class, 'index'])->name('
 
 Route::get('/kabar-santri', [PublicArtikelController::class, 'index'])->name('artikel.index');
 Route::get('/kabar-santri/{slug}', [PublicArtikelController::class, 'show'])->name('artikel.show');
+
+Route::get('/struktur-organisasi', [OrganisasiController::class, 'index'])->name('organisasi.index');
 
 
 require __DIR__.'/auth.php';
