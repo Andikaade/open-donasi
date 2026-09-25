@@ -73,7 +73,7 @@
                         <option value="">Semua Divisi / Kategori</option>
                         <option value="pelindung" {{ request('category') == 'pelindung' ? 'selected' : '' }}>Pelindung / Penasehat</option>
                         <option value="eksekutif" {{ request('category') == 'eksekutif' ? 'selected' : '' }}>Pimpinan Eksekutif / Pembina</option>
-                        <option value="pengurus_harian" {{ request('category') == 'pengurus_harian' ? 'selected' : '' }}>Pengurus Harian</option>
+                        <option value="pengurus" {{ request('category') == 'pengurus' ? 'selected' : '' }}>Pengurus</option>
                         <option value="seksi" {{ request('category') == 'seksi' ? 'selected' : '' }}>Seksi-Seksi</option>
                         <option value="guru" {{ request('category') == 'guru' ? 'selected' : '' }}>Majelis Guru</option>
                     </select>
@@ -127,7 +127,7 @@
                                         $badgeClasses = match($item->category) {
                                             'pelindung' => 'bg-slate-100 text-slate-700',
                                             'pembina', 'eksekutif' => 'bg-emerald-100 text-emerald-800',
-                                            'pengurus_harian' => 'bg-sky-100 text-sky-800',
+                                            'pengurus' => 'bg-sky-100 text-sky-800',
                                             'seksi' => 'bg-amber-100 text-amber-800',
                                             'guru' => 'bg-indigo-100 text-indigo-800',
                                             default => 'bg-slate-100 text-slate-700',

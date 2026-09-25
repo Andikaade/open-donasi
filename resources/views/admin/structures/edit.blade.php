@@ -106,7 +106,7 @@
                             <option value="">-- Pilih Kategori --</option>
                             <option value="pelindung" {{ old('category', $structure->category) == 'pelindung' ? 'selected' : '' }}>Pelindung / Penasehat</option>
                             <option value="eksekutif" {{ old('category', $structure->category) == 'eksekutif' ? 'selected' : '' }}>Pimpinan Eksekutif / Pembina</option>
-                            <option value="pengurus_harian" {{ old('category', $structure->category) == 'pengurus' ? 'selected' : '' }}>Pengurus</option>
+                            <option value="pengurus" {{ old('category', $structure->category) == 'pengurus' ? 'selected' : '' }}>Pengurus</option>
                             <option value="seksi" {{ old('category', $structure->category) == 'seksi' ? 'selected' : '' }}>Seksi-Seksi</option>
                             <option value="guru" {{ old('category', $structure->category) == 'guru' ? 'selected' : '' }}>Majelis Guru</option>
                         </select>

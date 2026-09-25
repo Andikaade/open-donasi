@@ -18,6 +18,7 @@ class Announcement extends Model
         'primary_button_url',
         'secondary_button_text',
         'secondary_button_url',
+        'secondary_button_file',
         'kuota',
         'batas_akhir',
         'beasiswa',

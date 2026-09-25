@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->nullable(); // Misal: UST, KUA, ADM
             $table->string('name');
-            $table->string('position'); // Jabatan
+            $table->string('position');
             $table->string('category');
             $table->string('email_or_phone')->nullable();
             $table->text('note')->nullable();

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Announcement;
 use App\Models\Artikel;
 use App\Models\Campaign;
-// use App\Models\FinancialReport;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -14,6 +13,7 @@ class FrontendController extends Controller
     public function index()
     {
         return view('welcome', [
+            'announcement'    => Announcement::where('is_active', true)->latest()->first(),
             'artikels'        => Artikel::latest('published_at')->latest()->take(3)->get(),
             'campaigns'       => Campaign::with('category')->where('is_active', true)->latest()->take(3)->get(),
             'artikel_terbaru' => Artikel::latest()->take(3)->get(),
@@ -37,5 +37,4 @@ class FrontendController extends Controller
     {
         return view('frontend.struktur.index');
     }
-
 }

@@ -47,9 +47,31 @@
 
                     <div class="w-0.5 h-5 bg-slate-300"></div>
 
-                    <!-- Level 2 & 3: Pengurus Harian -->
+                    <!-- Filter Pengurus Harian -->
+                    @php
+                        $pimpinanHarian = $pengurus->filter(function($item) {
+                            return str_contains(strtolower($item->position), 'ketua');
+                        });
+                        $stafHarian = $pengurus->reject(function($item) {
+                            return str_contains(strtolower($item->position), 'ketua');
+                        });
+                    @endphp
+
+                    <!-- Level 2: Ketua Umum & Wakil Ketua -->
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        @foreach($pimpinanHarian as $item)
+                            <div class="bg-emerald-600 text-white px-6 py-3 rounded-2xl text-center shadow-md min-w-[200px]">
+                                <span class="text-[10px] uppercase font-bold text-emerald-200 block tracking-wider">{{ $item->position }}</span>
+                                <strong class="text-sm block">{{ $item->name }}</strong>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="w-0.5 h-5 bg-slate-300"></div>
+
+                    <!-- Level 3: Sekretaris & Bendahara -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-3xl">
-                        @foreach($pengurus as $item)
+                        @foreach($stafHarian as $item)
                             <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl text-center">
                                 <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">{{ $item->position }}</span>
                                 <strong class="text-xs text-slate-800 block mt-0.5">{{ $item->name }}</strong>
